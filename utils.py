@@ -10,7 +10,7 @@ from sklearn import metrics
 
 @st.cache(persist=True)
 def load_data():
-    df = pd.read_csv('C:/Users/admin/Downloads/credit_dataset.csv')
+    df = pd.read_csv('credit_dataset.csv')
     df['FAMILY SIZE'] = df['FAMILY SIZE'].astype(int)
     
     le = LabelEncoder()
