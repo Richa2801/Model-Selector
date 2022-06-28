@@ -42,7 +42,8 @@ def main():
 
 
             if classifier == 'Light GBM':
-
+                    metrics = st.sidebar.multiselect("What matrix to plot?", ("Confusion Matrix", "ROC Curve",
+                                                                            "Precision-Recall Curve", "AUC Curve"))                
 
                     if st.sidebar.button("Classify", key="classify"):
                         st.subheader("Light GBM results")
