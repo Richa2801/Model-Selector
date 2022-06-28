@@ -42,15 +42,11 @@ def main():
 
 
             if classifier == 'Light GBM':
-                    st.sidebar.subheader("Model Hyperparameters")
-                    n = st.sidebar.number_input("Max_Leaf", 31, 100, step=1)
-                    max_iter = st.sidebar.slider("Maximum no. of iterations", 100, 500, key='max_iter')
-                    metrics = st.sidebar.multiselect("What matrix to plot?", ("Confusion Matrix", "ROC Curve",
-                                                                            "Precision-Recall Curve", "AUC Curve"))
+
 
                     if st.sidebar.button("Classify", key="classify"):
                         st.subheader("Light GBM results")
-                        model = LGBMClassifier(max_leaf=n, max_iter=max_iter, average='weighted')
+                        model = LGBMClassifier(average='weighted')
                         model.fit(x_train, y_train)
                         accuracy = model.score(x_test, y_test)
                         y_pred = model.predict(x_test)                   
