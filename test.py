@@ -60,7 +60,7 @@ def main():
 
             if classifier == 'Logistic Regression':
                 st.sidebar.subheader("Model Hyperparameters")
-                C = st.sidebar.number_input("C (Regularization parameter)", 0.01, 10.0, step=0.01, key='Lr')
+                C = st.sidebar.number_input("C (Inverse Regularization parameter)", 0.001, 10.0, step=0.01, key='Lr')
                 max_iter = st.sidebar.slider("Maximum no. of iterations", 100, 500, key='max_iter')
 
                 metrics = st.sidebar.multiselect("What matrix to plot?", ("Confusion Matrix", "ROC Curve","Precision-Recall Curve", "AUC Curve"))
@@ -106,7 +106,7 @@ def main():
             if classifier == 'KNN':
                 
                 st.sidebar.subheader("Model Hyperparameters")
-                n = st.sidebar.number_input("Max_Leaf")
+                n = st.sidebar.number_input("Neighbors", 5, 10)
                 m = st.sidebar.selectbox("What metric?", ("euclidean", "minkowski"))
                 metrics = st.sidebar.multiselect("What matrix to plot?", ("None","Confusion Matrix"))
 
@@ -121,8 +121,8 @@ def main():
 
             if classifier == 'SVM':
                 st.sidebar.subheader("Model Hyperparameters")
-                c = st.sidebar.number_input("C (Regularization parameter)", 0.1, 1000.0, step=10.0, key='Lr')
-                g = st.sidebar.number_input("gamma", 0.0001, 1.0, step=10.0, key='Lr')
+                c = st.sidebar.number_input("C (Inverse Regularization parameter)", 0.01, 1000.0, step=10.0, key='Lr')
+                g = st.sidebar.number_input("Gamma", 0.0001, 1.0, step=10.0, key='Lr')
                 svc = svm.SVC(kernel='linear', C=c, gamma=g)
                 metrics = st.sidebar.multiselect("What matrix to plot?", ("None","Confusion Matrix"))
 
@@ -137,7 +137,7 @@ def main():
 
             if classifier == 'Random Forest Classification':
                 st.sidebar.subheader("Model Hyperparameters")
-                n_estimators = st.sidebar.number_input("This is the number of trees in the forest", 100, 5000, step=10,
+                n_estimators = st.sidebar.number_input("Number of trees in the forest", 100, 5000, step=10,
                                                     key='n_estimators')
                 max_depth = st.sidebar.number_input("The maximum depth of the tree", 1, 100, step=2, key='max_depth')
                 bootstrap = st.sidebar.radio("Bootstrap samples when building trees", ("True", "False"), key='bootstrap')
